@@ -8,13 +8,13 @@ para.Kp = 9.13;
 para.Kn = 0.32;
 para.alpha = 0.23;
 
-% ----------------------Generate voltage sequence----------------------
+% ----------------------Voltage Sequence----------------------
 Vmin = -3;
 Vmax = 3;
 inv = 0.099;
 V = -[0:inv:Vmax-inv, Vmax:-inv:Vmin+inv, Vmin:inv:0];
 
-% ----------------------Start simulation----------------------
+% ----------------------Start Simulation----------------------
 step = length(V);
 I = zeros(1, step);
 G = para.G0;
@@ -22,7 +22,7 @@ for i = 1:step
     [I(i), G] = DynamicMemristor(V(i), G, para);
 end
 
-% ----------------------Experimental data----------------------
+% ----------------------Experimental Data----------------------
 load('exdata.mat');
 
 % ----------------------Plot----------------------
@@ -35,7 +35,7 @@ str2 = '\color{red}Experiment';
 lg = legend(str1, str2);
 set(lg, 'box', 'off');
 xlabel('Voltage (V)');
-ylabel('Current (¦ÌA)');
+ylabel('Current (Â¦ÃŒA)');
 axis([-3, 3, -inf, inf]);
 set(gca, 'FontName', 'Arial', 'FontSize', 20);
 set(gcf, 'unit', 'normalized', 'position', [0.2,0.2,0.3,0.45]);
@@ -49,7 +49,7 @@ para.Kp = 9.13;
 para.Kn = 0.32;
 para.alpha = 0.23;
 
-% ----------------------DM_RC parameters----------------------
+% ----------------------DM_RC Parameters----------------------
 ML = 4;
 N = 25;
 Vmax = 1;
@@ -170,7 +170,7 @@ para.Kp = 9.13;
 para.Kn = 0.32;
 para.alpha = 0.23;
 
-% ----------------------DM_RC parameters----------------------
+% ----------------------DM_RC Parameters----------------------
 ML = 4;
 N = 10;
 Vmax = 3;
