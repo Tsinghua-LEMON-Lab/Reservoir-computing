@@ -99,13 +99,15 @@ for i = 1:length(Input_ex(1, :))
     sprintf('%s', ['train:', num2str(i), ', Vmax:', num2str(Vmax), ', ML:', num2str(ML)])
 end
 
-% linear regression
+% states collection
 states = [];
 for i = 1:step
     a = memout(:, ML*(i-1)+1:ML*i);
     states(:, i) = a(:);
 end
 X = [ones(1,step); states];
+
+% linear regression
 Wout = Target*pinv(X);
 
 % ----------------------TEST----------------------
@@ -135,12 +137,14 @@ for i = 1:length(Input_ex(1, :))
     sprintf('%s',['test:', num2str(i), ', Vmax:', num2str(Vmax), ', ML:', num2str(ML)])
 end
 
-% system output
+% states collection
 for i = 1:step
     a = memout(:, ML*(i-1)+1:ML*i);
     states(:,i) = a(:);
 end
 X = [ones(1,step);states];
+
+% system output
 Out = Wout*X;
 NRMSE = sqrt(mean((Out(10:end)-Target(10:end)).^2)./var(Target(10:end)));
 sprintf('%s',['NRMSE:',num2str(NRMSE)])
