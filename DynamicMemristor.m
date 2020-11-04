@@ -1,6 +1,6 @@
 function [I,G]=DynamicMemristor(V,G,para)
 G=para.r*G+(1-para.r)*para.G0+updata(V,para.alpha).*(binaryFunc(V)-G);
-I=G.*(para.Kp*NL(max(V,0))-para.Kn*NL(-min(V,0)));
+I=G.*(para.Kp*NL(max(V,0))+para.Kn*NL(min(V,0)));
 end
 
 function y=binaryFunc(x)
