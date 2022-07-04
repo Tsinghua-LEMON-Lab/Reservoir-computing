@@ -67,7 +67,7 @@ def main(TASKNAME, CS, isMapping, ForceZero, Save):
     time.sleep(0.1)
 
     BF = 3
-    ER = 30
+    ER = 10
     MX = 250
     if isMapping==1:
         # WEIGHT MAPPING
